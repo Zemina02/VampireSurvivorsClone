@@ -3,10 +3,14 @@ package com.example.game.profile
 import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import com.example.game.models.Highscore
 import com.example.game.models.User
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import com.google.firebase.firestore.firestore
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+
 
 data class ProfileState(
     var name : String = "",
@@ -21,6 +25,7 @@ class ProfileViewModel : ViewModel() {
 
     var uiState = mutableStateOf(ProfileState())
         private set
+
 
     fun onChangeEmail(email : String) {
         uiState.value = uiState.value.copy(

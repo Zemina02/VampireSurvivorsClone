@@ -1,9 +1,10 @@
 package com.example.game.game
 
 import android.graphics.Rect
+import com.example.game.R
+
 
 class CollisionManager {
-    
     fun checkCollision(rect1: Rect, rect2: Rect): Boolean {
         return rect1.left < rect2.right &&
                rect1.right > rect2.left &&

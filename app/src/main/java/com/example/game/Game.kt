@@ -10,6 +10,8 @@ import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import com.example.game.R
+import android.media.SoundPool
+
 
 class Game(
     context: Context,
@@ -40,6 +42,9 @@ class Game(
 
     private val weapons = listOf(Weapon(WeaponType.FIREBALL, context))
     private var currentWeapon = weapons[0]
+
+    private val soundPool = SoundPool.Builder().setMaxStreams(10).build()
+    private val glassbreaking = soundPool.load(context, R.raw.glass_breaking, 1)
 
 
     private var screenWidth = width
@@ -153,8 +158,11 @@ class Game(
         }
 
         val collisions = collisionManager.checkProjectileEnemyCollisions(projectiles, enemies)
-        for ((projectile, enemy) in collisions) {
+        for ((projectile, enemy) in collisions)
+        {
             enemy.takeDamage(projectile.damage)
+            soundPool.play(glassbreaking, 1f, 1f, 0, 0, 1f)
+
             projectiles.remove(projectile)
             if (!enemy.isAlive()) {
                 enemies.remove(enemy)

@@ -22,6 +22,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.game.components.MyTopBar
+import com.example.game.login.LoginViewModel
 import com.example.game.ui.theme.GameTheme
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
@@ -30,10 +31,12 @@ import com.google.firebase.auth.auth
 @Composable
 fun HighscoreView(
     viewModel: HighscoreViewModel = viewModel(),
+
     userId: String = Firebase.auth.currentUser?.uid ?: "",
     navController: NavController
 ) {
     val highscore by viewModel.highscore.collectAsState()
+
 
     LaunchedEffect(userId) {
         viewModel.loadHighscore(userId)
