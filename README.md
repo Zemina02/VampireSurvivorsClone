@@ -89,7 +89,6 @@ Para o desenvolvimento do nosso jogo, nós recorremos ao Piskel para realizar al
 **![](app/src/main/res/drawable/magobackview.png)**
 **![](app/src/main/res/drawable/magovistalateral.png)**
 **![](app/src/main/res/drawable/magovistalateralesquerda.png)**
-**![](app/src/main/res/drawable/menufundo.jpeg)**
 
 **4\. Modelo de Dados**
 
